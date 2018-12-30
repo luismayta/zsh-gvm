@@ -9,17 +9,20 @@ LABEL NAME zsh-gvm-app-$stage
 LABEL VERSION $version
 
 ENV PACKAGES bash \
-        build-base \
-        git \
-        gcc \
-        libc-dev \
-        libmagic \
-        linux-headers \
-        make \
-        musl-dev \
-        openssl \
-        pcre-dev \
-        zlib-dev
+  zsh \
+  curl \
+  bison \
+  build-base \
+  git \
+  gcc \
+  libc-dev \
+  libmagic \
+  linux-headers \
+  make \
+  musl-dev \
+  openssl \
+  pcre-dev \
+  zlib-dev
 
 COPY ./requirements/ /usr/src/requirements/
 COPY ./requirements.txt /usr/src/requirements.txt

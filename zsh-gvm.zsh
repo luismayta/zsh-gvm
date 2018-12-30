@@ -18,6 +18,6 @@ function load_gvm {
 
 load_gvm
 
-if (( ! $+commands["gvm"] )); then
+if (( ! $+commands[gvm] )); then
     install_gvm
 fi

@@ -7,21 +7,19 @@ services:
   app:
     environment: &environment
       - STAGE=local
-    image: zsh-gvm-app-dev:0.1.1
+    image: zsh-gvm-app-dev
     build:
       args:
         stage: dev
-        version: 0.1.1
 
   check:
-    image: zsh-gvm-check-dev:0.1.1
+    image: zsh-gvm-check-dev
     environment: *environment
     build:
       context: .
       dockerfile: provision/docker/check/Dockerfile
       args:
         stage: dev
-        version: 0.1.1
     volumes:
       - .:/usr/src
     env_file:

@@ -20,7 +20,6 @@ SOURCE_DIR=$(ROOT_DIR)/
 REQUIREMENTS_DIR=$(ROOT_DIR)/requirements
 PROVISION_DIR:=$(ROOT_DIR)/provision
 FILE_README:=$(ROOT_DIR)/README.rst
-KEYS_DIR:="${HOME}/.ssh"
 PATH_DOCKER_COMPOSE:=provision/docker-compose
 
 pip_install := pip install -r
@@ -43,13 +42,13 @@ help:
 clean:
 	@echo "$(TAG)"Cleaning up"$(END)"
 ifneq (Darwin,$(OS))
-	@sudo rm -rf .tox *.egg dist build .coverage .pytest_cache
+	@sudo rm -rf .tox *.egg *.egg-info dist build .coverage .eggs .mypy_cache
 	@sudo rm -rf docs/build
-	@sudo find . -name '__pycache__' -delete -print -o -name '*.pyc' -delete -print -o -name '*.tmp' -delete -print
+	@sudo find . -name '__pycache__' -delete -print -o -name '*.pyc' -delete -print -o -name '*.pyo' -delete -print -o -name '*~' -delete -print -o -name '*.tmp' -delete -print
 else
-	@rm -rf .tox *.egg dist build .coverage .pytest_cache
+	@rm -rf .tox *.egg *.egg-info dist build .coverage .eggs .mypy_cache
 	@rm -rf docs/build
-	@find . -name '__pycache__' -delete -print -o -name '*.pyc' -delete -print -o -name '*.tmp' -delete -print
+	@find . -name '__pycache__' -delete -print -o -name '*.pyc' -delete -print -o -name '*.pyo' -delete -print -o -name '*~' -delete -print -o -name '*.tmp' -delete -print
 endif
 	@echo
 

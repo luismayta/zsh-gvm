@@ -33,6 +33,8 @@ function install_go {
         go get -u github.com/pengwynn/flint
         go get -u github.com/rogpeppe/godef
         go get -u github.com/dougm/goflymake
+        # tools
+        go get -u github.com/99designs/aws-vault
     fi
 }
 

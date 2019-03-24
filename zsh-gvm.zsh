@@ -9,17 +9,16 @@
 #
 
 LIGHT_GREEN='\033[1;32m'
-GREEN='\033[0;32m'
 CLEAR='\033[0m'
 
-function install_gvm {
+function gvm::install {
     echo -e "${CLEAR}${LIGHT_GREEN}Installing GVM${CLEAR}"
     bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-    install_go
+    go::install
 }
 
-function install_go {
-    [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+function go::install {
+    gvm::load
     if (( $+commands[gvm] )); then
         echo -e "${CLEAR}${LIGHT_GREEN} Install Go ${CLEAR}"
         gvm install go1.11.4 -B
@@ -39,12 +38,12 @@ function install_go {
     fi
 }
 
-function load_gvm {
+function gvm::load {
     [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 }
 
-load_gvm
+gvm::load
 
 if (( ! $+commands[gvm] )); then
-    install_gvm
+    gvm::install
 fi

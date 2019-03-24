@@ -35,6 +35,7 @@ function install_go {
         go get -u github.com/dougm/goflymake
         # tools
         go get -u github.com/99designs/aws-vault
+        go get -u github.com/minamijoyo/myaws/myaws
     fi
 }
 
